@@ -1,16 +1,16 @@
 ---
-name: domotz-fahm
-description: Use when querying FAHM/BitGiants Domotz collectors and devices for status, inventory, topology, uptime, history, configuration backup status, and safe remediation discovery/execution through the claw-domotz wrapper. Enforces read-first and approval-before-write guardrails.
+name: domotz-devices
+description: Use when querying BitGiants Domotz collectors and devices for InMocean, FAHM, or other client sites: status, inventory, topology, uptime, history, config backup, and safe remediation discovery/execution through claw-domotz. Enforces read-first and approval-before-write guardrails.
 version: 1.0.0
 author: Capacitor / Hermes Agent
 license: MIT
 metadata:
   hermes:
-    tags: [domotz, fahm, bitgiants, monitoring, remediation, clawnet, wrapper]
+    tags: [domotz, devices, inmocean, fahm, bitgiants, monitoring, remediation, clawnet, wrapper]
     related_skills: [openclaw-operations, api-credentials, native-mcp]
 ---
 
-# Domotz FAHM / BitGiants Operations
+# Domotz Devices / BitGiants Operations
 
 ## Overview
 
@@ -25,7 +25,7 @@ Domotz MCP (`https://mcp.domotz.com/mcp`) is OAuth/JWT-backed and does not accep
 Use this skill when Serg or Bob needs to:
 
 - List Domotz collectors/agents and their online/offline status.
-- Query FAHM/client device inventory, online/down counts, device details, IPs, and SNMP status.
+- Query InMocean, FAHM, and other client device inventory, online/down counts, device details, IPs, and SNMP status.
 - Check collector/device uptime.
 - Pull network topology edges.
 - Inspect network event history, RTD history, inventory fields, variables, or config backup history.
@@ -127,7 +127,7 @@ Before asking for approval, collect:
 Example approval wording:
 
 ```text
-I found device AP-LOBBY-3 (device_id 123, 10.x.x.x) DOWN on collector FAHM (agent_id 456). Domotz reports software_reboot is available. This will attempt to reboot that device. Reply approve reboot AP-LOBBY-3 to proceed.
+I found device AP-LOBBY-3 (device_id 123, 10.x.x.x) DOWN on collector/client site <collector-name> (agent_id 456). Domotz reports software_reboot is available. This will attempt to reboot that device. Reply approve reboot AP-LOBBY-3 to proceed.
 ```
 
 ## Output Modes
