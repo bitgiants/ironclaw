@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# claw-domotz — Domotz CLI via ClawNet-style wrapper
+set -euo pipefail
+
+# Resolve symlinks to find the real script directory
+SOURCE="${BASH_SOURCE[0]}"
+while [ -L "$SOURCE" ]; do
+    DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+    SOURCE="$(readlink "$SOURCE")"
+    [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+SCRIPT_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+
+exec python3 "${SCRIPT_DIR}/domotz_cli.py" "$@"
